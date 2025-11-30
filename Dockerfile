@@ -1,5 +1,12 @@
+# Stage 1: Build the application
+FROM maven:3.9.6-eclipse-temurin-21 AS builder
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run the application
 FROM eclipse-temurin:21-jre
 WORKDIR /app
-COPY target/moneymanager-0.0.1-SNAPSHOT.jar momeymanager-v1.0.jar
+COPY --from=builder /app/target/*.jar app.jar
 EXPOSE 9090
-ENTRYPOINT ["java","-jar","momeymanager-v1.0"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
