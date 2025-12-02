@@ -27,13 +27,11 @@ public class SecurityConfig {
     private final AppUserDetailService appUserDetailService;
     private final JwtRequestFilter jwtRequestFilter;
 
-    // ------------------ Password Encoder ------------------
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    // ------------------ Authentication Manager ------------------
     @Bean
     public AuthenticationManager authenticationManager() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
@@ -43,7 +41,6 @@ public class SecurityConfig {
         return new org.springframework.security.authentication.ProviderManager(provider);
     }
 
-    // ------------------ Security Filter Chain ------------------
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
@@ -64,7 +61,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // ------------------ CORS Configuration ------------------
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration cors = new CorsConfiguration();
