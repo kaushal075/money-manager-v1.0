@@ -21,5 +21,8 @@ public class MoneymanagerApplication {
         } else {
             System.out.println("Active Spring profiles: " + Arrays.toString(activeProfiles));
         }
+//        System.out.println(System.getenv("BREVO_API_KEY"));
+//        System.out.println(System.getenv("BREVO_SENDER_EMAIL"));
+
     }
 }

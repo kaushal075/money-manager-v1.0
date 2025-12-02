@@ -2,6 +2,7 @@ package com.financialProject.controller;
 
 import com.financialProject.dto.AuthDto;
 import com.financialProject.dto.ProfileDto;
+import com.financialProject.services.EmailService;
 import com.financialProject.services.ProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,9 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ProfileController {
     private final ProfileService profileService;
+
+
+
 
     @PostMapping("/register")
     public ResponseEntity<ProfileDto> registerProfile(@RequestBody ProfileDto profileDto) {
